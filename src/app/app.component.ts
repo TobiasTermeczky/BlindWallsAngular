@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
-import {BlindWallService} from "./services/BlindWall.service";
-import {BlindWall} from "./model/blindWall/BlindWall";
+import {Component} from '@angular/core';
+import {BlindWallService} from './services/BlindWall.service';
+import {BlindWall} from './model/blindWall/BlindWall';
 
 @Component({
   selector: 'app-root',
@@ -9,10 +9,10 @@ import {BlindWall} from "./model/blindWall/BlindWall";
 })
 export class AppComponent {
   title = 'app';
-  public BlindWalls:BlindWall[];
+  public BlindWalls: BlindWall[];
 
 
-  constructor(private BlindWallService:BlindWallService) {
+  constructor(private BlindWallService: BlindWallService) {
     //...eventuele extra initialisaties
   }
 
@@ -32,8 +32,8 @@ export class AppComponent {
             console.log(this.BlindWalls);
           },
           err => console.log(err),						// 2. error handler
-          ()=> console.log('Getting cities complete...')	// 3. complete handler
-        )
+          () => console.log('Getting cities complete...')	// 3. complete handler
+        );
     }
   }
 
