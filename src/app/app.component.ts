@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {BlindWallService} from './services/BlindWall.service';
 import {BlindWall} from './model/blindWall/BlindWall';
 import {RouteService} from './services/Route.service';
@@ -9,14 +9,14 @@ import {Route} from '@angular/router';
   templateUrl: './html/app.component.html',
   styleUrls: ['./css/app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
   title = 'app';
   public BlindWalls: BlindWall[];
   public Routes: Route[];
 
 
   constructor(private BlindWallService: BlindWallService, private RouteService: RouteService) {
-    //...eventuele extra initialisaties
+
   }
 
   ngOnInit() {
@@ -24,10 +24,6 @@ export class AppComponent {
     this.getRoutes();
   }
 
-
-  //***********************
-  // implementation
-  //***********************
   getBlindWalls() {
     if (!this.BlindWalls) {
       this.BlindWallService.getBlindWalls()
@@ -41,8 +37,8 @@ export class AppComponent {
     }
   }
 
-  private getRoutes() {
-    if(!this.Routes) {
+  getRoutes() {
+    if (!this.Routes) {
       this.RouteService.getRoutes()
         .subscribe(RouteData => {
           this.Routes = RouteData.json();
