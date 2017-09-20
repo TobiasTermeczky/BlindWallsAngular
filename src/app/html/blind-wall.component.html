@@ -1,0 +1,5 @@
+<h2>murals: </h2>
+<div *ngFor="let BlindWall of BlindWalls">
+  <h3>{{BlindWall.id}} - {{BlindWall.title.nl}}</h3>
+  <img src="https://api.blindwalls.gallery/{{BlindWall.images[0].file}}" alt="{{BlindWall.title.nl}}" />
+</div>

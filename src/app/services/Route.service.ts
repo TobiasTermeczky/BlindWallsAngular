@@ -10,10 +10,6 @@ export class RouteService {
 
   }
 
-  numRoutes() {
-    return this.Routes.length;
-  }
-
   getRoutes() {
     return this._http.get('https://api.blindwalls.gallery/apiv2/routes');
   }
