@@ -3,15 +3,11 @@ import {Http} from '@angular/http';
 import {BlindWall} from '../model/blindWall/BlindWall';
 
 @Injectable()
-export class BlindWallService{
+export class BlindWallService {
   private BlindWalls: BlindWall[];
 
   constructor(private _http: Http) {
 
-  }
-
-  setBlindWalls(BlindWalls) {
-    this.BlindWalls = BlindWalls;
   }
 
   numBlindWalls() {
