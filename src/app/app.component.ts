@@ -1,6 +1,8 @@
 import {Component} from '@angular/core';
 import {BlindWallService} from './services/BlindWall.service';
 import {BlindWall} from './model/blindWall/BlindWall';
+import {RouteService} from './services/Route.service';
+import {Route} from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -10,14 +12,16 @@ import {BlindWall} from './model/blindWall/BlindWall';
 export class AppComponent {
   title = 'app';
   public BlindWalls: BlindWall[];
+  public Routes: Route[];
 
 
-  constructor(private BlindWallService: BlindWallService) {
+  constructor(private BlindWallService: BlindWallService, private RouteService: RouteService) {
     //...eventuele extra initialisaties
   }
 
   ngOnInit() {
     this.getBlindWalls();
+    this.getRoutes();
   }
 
 
@@ -32,9 +36,21 @@ export class AppComponent {
             console.log(this.BlindWalls);
           },
           err => console.log(err),						// 2. error handler
-          () => console.log('Getting cities complete...')	// 3. complete handler
+          () => console.log('Getting BlindWalls complete...')	// 3. complete handler
         );
     }
   }
 
+  private getRoutes() {
+    if(!this.Routes) {
+      this.RouteService.getRoutes()
+        .subscribe(RouteData => {
+          this.Routes = RouteData.json();
+          console.log(this.Routes);
+        },
+          err => console.log(err),
+          () => console.log('Getting Routes complete...')
+        );
+    }
+  }
 }

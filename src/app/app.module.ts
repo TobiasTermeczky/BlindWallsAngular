@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import {HttpModule} from '@angular/http';
 import {BlindWallService} from './services/BlindWall.service';
+import {RouteService} from './services/Route.service';
 
 @NgModule({
   declarations: [
@@ -12,7 +13,7 @@ import {BlindWallService} from './services/BlindWall.service';
   imports: [
     BrowserModule, HttpModule
   ],
-  providers: [BlindWallService],
+  providers: [BlindWallService, RouteService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
