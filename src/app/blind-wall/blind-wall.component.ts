@@ -5,8 +5,8 @@ import {BlindWallService} from '../services/BlindWall.service';
 
 @Component({
   selector: 'app-root',
-  templateUrl: '../html/blind-wall.component.html',
-  styleUrls: ['../css/bootstrap.min.css', '../css/blind-wall.component.css']
+  templateUrl: './blind-wall.component.html',
+  styleUrls: ['../css/bootstrap.min.css', './blind-wall.component.css']
 })
 export class BlindWallComponent implements OnInit {
   BlindWalls: BlindWall[];

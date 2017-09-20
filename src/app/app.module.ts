@@ -1,17 +1,19 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-import { AppComponent } from './component/app.component';
+import { AppComponent } from './app/app.component';
 import {HttpModule} from '@angular/http';
 import {BlindWallService} from './services/BlindWall.service';
 import {RouteService} from './services/Route.service';
-import {BlindWallComponent} from './component/blind-wall.component';
+import {BlindWallComponent} from './blind-wall/blind-wall.component';
 import {AppRoutingModule} from './app-routing.module';
-import {RouteComponent} from './component/route.component';
+import {RouteComponent} from './route/route.component';
+import { NavComponent } from './nav/nav.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
-    AppComponent, BlindWallComponent, RouteComponent
+    AppComponent, BlindWallComponent, RouteComponent, NavComponent, FooterComponent
   ],
   imports: [
     BrowserModule, HttpModule, AppRoutingModule

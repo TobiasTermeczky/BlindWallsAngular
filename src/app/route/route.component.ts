@@ -5,8 +5,8 @@ import {RouteService} from '../services/Route.service';
 
 @Component({
   selector: 'app-root',
-  templateUrl: '../html/route.component.html',
-  styleUrls: ['../css/bootstrap.min.css', '../css/route.component.css']
+  templateUrl: './route.component.html',
+  styleUrls: ['../css/bootstrap.min.css', './route.component.css']
 })
 export class RouteComponent implements OnInit {
   public Routes: Route[];
