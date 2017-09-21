@@ -23,7 +23,7 @@ export class BlindWallComponent implements OnInit {
     if (!this.BlindWalls) {
       this.BlindWallService.getBlindWalls()
         .subscribe(BlindWallData => {
-            this.BlindWalls = BlindWallData.json();				// 1. success handler
+            this.BlindWalls = BlindWallData.json(); // 1. success handler
             console.log(this.BlindWalls);
           },
           err => console.log(err),						// 2. error handler
