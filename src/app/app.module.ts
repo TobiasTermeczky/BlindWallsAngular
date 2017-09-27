@@ -10,13 +10,14 @@ import {AppRoutingModule} from './app-routing.module';
 import {RouteComponent} from './route/route.component';
 import { NavComponent } from './nav/nav.component';
 import { FooterComponent } from './footer/footer.component';
+import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
 
 @NgModule({
   declarations: [
     AppComponent, BlindWallComponent, RouteComponent, NavComponent, FooterComponent
   ],
   imports: [
-    BrowserModule, HttpModule, AppRoutingModule
+    BrowserModule, HttpModule, AppRoutingModule, NgbModule.forRoot()
   ],
   providers: [BlindWallService, RouteService],
   bootstrap: [AppComponent]
