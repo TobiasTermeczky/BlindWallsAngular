@@ -6,7 +6,7 @@ import {RouteComponent} from './route/route.component';
 const routes: Routes = [
   { path: '', redirectTo: '/blindwall', pathMatch: 'full' },
   { path: 'blindwall',  component: BlindWallComponent },
-  // { path: 'blindwall/:id', component: BlindWallDetailComponent },
+//{ path: 'blindwall/:id', component: BlindWallDetailComponent},
   { path: 'route', component: RouteComponent }
 ];
 
