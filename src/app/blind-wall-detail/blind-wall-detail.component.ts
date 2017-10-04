@@ -37,6 +37,7 @@ export class BlindWallDetailComponent implements OnInit, OnDestroy {
               if ( BlindWallObj.id === this.id ) {
                 console.log(BlindWallObj);
                 this.BlindWallDetail = BlindWallObj;
+                this.fixBreakLineInDescription();
               }
             }
           },
@@ -44,5 +45,11 @@ export class BlindWallDetailComponent implements OnInit, OnDestroy {
           () => console.log('Getting BlindWalls complete...')	// 3. complete handler
         );
     }
+  }
+
+
+  private fixBreakLineInDescription(){
+    this.BlindWallDetail.description.nl = this.BlindWallDetail.description.nl.replace('\n', '<br/>');
+    this.BlindWallDetail.description.en = this.BlindWallDetail.description.en.replace('\n', '<br/>');
   }
 }

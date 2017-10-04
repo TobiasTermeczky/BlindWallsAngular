@@ -1,18 +1,48 @@
 <div class="container">
-<div class="angular-with-newlines">
-Id: {{BlindWallDetail.id}}
-Author: {{BlindWallDetail.author}}
-Title: {{BlindWallDetail.title.nl}}
-  <div style="white-space:pre-wrap;" class="breaking">Description: {{BlindWallDetail.description.nl}}</div>
 
-Address: {{BlindWallDetail.address}}
-Category: {{BlindWallDetail.category.nl}}
-Material: {{BlindWallDetail.material.nl}}
-<a href="{{BlindWallDetail.videoUrl}}">Video by: {{BlindWallDetail.videoAuthor}}</a>
-Year: {{BlindWallDetail.year}}
-Latitude: {{BlindWallDetail.latitude}}
-Longitude: {{BlindWallDetail.longitude}}
-</div>
+  <ngb-carousel>
+    <div *ngFor="let Image of BlindWallDetail.images">
+      <ng-template ngbSlide *ngIf="Image.type === 'frontpage'">
+          <img class="center-block" src="https://api.blindwalls.gallery/{{Image.file}}" alt="{{BlindWallDetail.title}}">
+          <div class="carousel-caption">
+            <h3>{{BlindWallDetail.author}}</h3>
+            <p>{{BlindWallDetail.title.nl}} · {{BlindWallDetail.year}}</p>
+          </div>
+      </ng-template>
+    </div>
+
+
+    <div *ngFor="let Image of BlindWallDetail.images">
+    <ng-template ngbSlide *ngIf="Image.type != 'frontpage'">
+        <img class="center-block" src="https://api.blindwalls.gallery/{{Image.file}}" alt="{{BlindWallDetail.title}}">
+        <div class="carousel-caption">
+          <h3>{{BlindWallDetail.author}}</h3>
+          <p>{{BlindWallDetail.title.nl}} · {{BlindWallDetail.year}}</p>
+        </div>
+    </ng-template>
+    </div>
+
+    <!--<a href="{{BlindWallDetail.videoUrl}}">Video by: {{BlindWallDetail.videoAuthor}}</a> the player will come in the carousel-->
+  </ngb-carousel>
+
+
+
+  <!--<div class="angular-with-newlines">-->
+  <div>
+    <h2>{{BlindWallDetail.author}}</h2>
+    <footer class="blockquote-footer">{{BlindWallDetail.address}}</footer>
+    <p [innerHTML]="BlindWallDetail.description.nl"></p>
+
+
+
+  Address: {{BlindWallDetail.address}}
+  Category: {{BlindWallDetail.category.nl}}
+  Material: {{BlindWallDetail.material.nl}}
+    Fotografie: {{BlindWallDetail.photographer}}
+
+  Latitude: {{BlindWallDetail.latitude}}
+  Longitude: {{BlindWallDetail.longitude}}
+  </div>
 </div>
 
 

@@ -31,4 +31,6 @@ export class BlindWallComponent implements OnInit {
         );
     }
   }
+
+
 }
