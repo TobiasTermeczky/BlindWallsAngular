@@ -10,11 +10,12 @@ import {AppRoutingModule} from './app-routing.module';
 import {RouteComponent} from './route/route.component';
 import { NavComponent } from './nav/nav.component';
 import { FooterComponent } from './footer/footer.component';
-import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {BlindWallDetailComponent} from './blind-wall-detail/blind-wall-detail.component';
 
 @NgModule({
   declarations: [
-    AppComponent, BlindWallComponent, RouteComponent, NavComponent, FooterComponent
+    AppComponent, BlindWallComponent, BlindWallDetailComponent, RouteComponent, NavComponent, FooterComponent
   ],
   imports: [
     BrowserModule, HttpModule, AppRoutingModule, NgbModule.forRoot()

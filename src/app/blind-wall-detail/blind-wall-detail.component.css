@@ -1,0 +1,8 @@
+.angular-with-newlines {
+  white-space: pre;
+
+}
+
+.breaking{
+  word-break: break-all;
+}

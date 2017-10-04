@@ -1,4 +1,4 @@
-import {Title} from '@angular/platform-browser';
+import {Title} from './Title';
 import {Url} from './Url';
 import {Description} from './Description';
 import {Material} from './Material';
