@@ -1,14 +1,10 @@
 <div class="container">
-
-  <h2>murals: </h2>
-  <div *ngFor="let BlindWall of BlindWalls">
-    <h3>{{BlindWall.id}} - {{BlindWall.title.nl}}</h3>
-    <div *ngFor="let Image of BlindWall.images">
-      <img *ngIf="Image.type === 'frontpage'" src="https://api.blindwalls.gallery/{{Image.file}}" alt="{{BlindWall.title.nl}}" />
+  <ng-container *ngFor="let BlindWall of BlindWalls" >
+    <a href="detail={{BlindWall.id}}">
+      <figure *ngFor="let Image of BlindWall.images">
+        <img *ngIf="Image.type === 'frontpage'" src="https://api.blindwalls.gallery/{{Image.file}}" alt="{{BlindWall.title.nl}}" />
+        <figcaption *ngIf="Image.type === 'frontpage'">"{{BlindWall.title.nl}} : {{BlindWall.author}}"</figcaption>
+      </figure>
+    </a>
+  </ng-container>
   </div>
-  </div>
-
-
-</div>
-
-
