@@ -1,47 +1,61 @@
 <div class="container">
+  <div *ngIf="BlindWallDetail">
 
-  <ngb-carousel>
-    <div *ngFor="let Image of BlindWallDetail.images">
-      <ng-template ngbSlide *ngIf="Image.type === 'frontpage'">
+    <ngb-carousel>
+      <div *ngFor="let Image of BlindWallDetail.images">
+        <ng-template ngbSlide *ngIf="Image.type === 'frontpage'">
+            <img class="center-block" src="https://api.blindwalls.gallery/{{Image.file}}" alt="{{BlindWallDetail.title}}">
+            <div class="carousel-caption">
+              <h3>{{BlindWallDetail.author}}</h3>
+              <p>{{BlindWallDetail.title.nl}} · {{BlindWallDetail.year}}</p>
+            </div>
+        </ng-template>
+      </div>
+
+      <div *ngFor="let Image of BlindWallDetail.images">
+      <ng-template ngbSlide *ngIf="Image.type != 'frontpage'">
           <img class="center-block" src="https://api.blindwalls.gallery/{{Image.file}}" alt="{{BlindWallDetail.title}}">
           <div class="carousel-caption">
             <h3>{{BlindWallDetail.author}}</h3>
             <p>{{BlindWallDetail.title.nl}} · {{BlindWallDetail.year}}</p>
           </div>
       </ng-template>
-    </div>
+     </div>
 
+      <!--<a href="{{BlindWallDetail.videoUrl}}">Video by: {{BlindWallDetail.videoAuthor}}</a> the player will come in the carousel-->
+    </ngb-carousel>
 
-    <div *ngFor="let Image of BlindWallDetail.images">
-    <ng-template ngbSlide *ngIf="Image.type != 'frontpage'">
-        <img class="center-block" src="https://api.blindwalls.gallery/{{Image.file}}" alt="{{BlindWallDetail.title}}">
-        <div class="carousel-caption">
-          <h3>{{BlindWallDetail.author}}</h3>
-          <p>{{BlindWallDetail.title.nl}} · {{BlindWallDetail.year}}</p>
-        </div>
-    </ng-template>
-    </div>
-
-    <!--<a href="{{BlindWallDetail.videoUrl}}">Video by: {{BlindWallDetail.videoAuthor}}</a> the player will come in the carousel-->
-  </ngb-carousel>
-
-
-
-  <!--<div class="angular-with-newlines">-->
-  <div>
     <h2>{{BlindWallDetail.author}}</h2>
     <footer class="blockquote-footer">{{BlindWallDetail.address}}</footer>
     <p [innerHTML]="BlindWallDetail.description.nl"></p>
 
+    <div class="row">
+      <div class="col-sm-4">
+        <h5>Fotograaf:</h5>
+        <ul>
+          <li>{{BlindWallDetail.photographer}}</li>
+        </ul>
+      </div>
+      <div class="col-sm-4">
+        <h5>Category:</h5>
+        <ul>
+          <li>{{BlindWallDetail.category.nl}}</li>
+        </ul>
+      </div>
+
+      <div class="col-sm-4">
+        <h5>Materiaal:</h5>
+        <ul>
+          <li>{{BlindWallDetail.material.nl}}</li>
+        </ul>
+      </div>
+    </div>
 
 
-  Address: {{BlindWallDetail.address}}
-  Category: {{BlindWallDetail.category.nl}}
-  Material: {{BlindWallDetail.material.nl}}
-    Fotografie: {{BlindWallDetail.photographer}}
+      <agm-map [latitude]="BlindWallDetail.latitude" [longitude]="BlindWallDetail.longitude" [zoom]="15">
+        <agm-marker [latitude]="BlindWallDetail.latitude" [longitude]="BlindWallDetail.longitude"></agm-marker>
+      </agm-map>
 
-  Latitude: {{BlindWallDetail.latitude}}
-  Longitude: {{BlindWallDetail.longitude}}
   </div>
 </div>
 

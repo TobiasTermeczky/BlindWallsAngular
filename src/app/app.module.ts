@@ -12,13 +12,18 @@ import { NavComponent } from './nav/nav.component';
 import { FooterComponent } from './footer/footer.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {BlindWallDetailComponent} from './blind-wall-detail/blind-wall-detail.component';
+import { AgmCoreModule } from '@agm/core';
+
+
 
 @NgModule({
   declarations: [
     AppComponent, BlindWallComponent, BlindWallDetailComponent, RouteComponent, NavComponent, FooterComponent
   ],
   imports: [
-    BrowserModule, HttpModule, AppRoutingModule, NgbModule.forRoot()
+    BrowserModule, HttpModule, AppRoutingModule, NgbModule.forRoot(), AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyBk11HPd3iP4TQIGnJ8I6fVGehAt57Ml60'
+    })
   ],
   providers: [BlindWallService, RouteService],
   bootstrap: [AppComponent]
