@@ -1,8 +1,9 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import {Component, OnInit, OnDestroy, Input} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import {BlindWall} from '../model/blindWall/BlindWall';
 import {BlindWallService} from '../services/BlindWall.service';
 import {forEach} from '@angular/router/src/utils/collection';
+import {AsyncLocalStorage} from "angular-async-local-storage";
 
 @Component({
   selector: 'app-root',
@@ -12,10 +13,9 @@ import {forEach} from '@angular/router/src/utils/collection';
 export class BlindWallDetailComponent implements OnInit, OnDestroy {
   id: number;
   private sub: any;
-  BlindWalls: BlindWall[];
   BlindWallDetail: BlindWall;
 
-  constructor(private route: ActivatedRoute, private BlindWallService: BlindWallService) {}
+  constructor(private route: ActivatedRoute, private BlindWallService: BlindWallService, protected storage: AsyncLocalStorage) {}
 
   ngOnInit() {
     this.sub = this.route.params.subscribe(params => {
@@ -29,22 +29,36 @@ export class BlindWallDetailComponent implements OnInit, OnDestroy {
   }
 
   getBlindWalls(): void {
-    if (!this.BlindWalls) {
-      this.BlindWallService.getBlindWalls()
-        .subscribe(BlindWallData => {
-            this.BlindWalls = BlindWallData.json(); // 1. success handler
-            for (let BlindWallObj of this.BlindWalls){
-              if ( BlindWallObj.id === this.id ) {
-                console.log(BlindWallObj);
-                this.BlindWallDetail = BlindWallObj;
-                this.fixBreakLineInDescription();
-              }
-            }
-          },
-          err => console.log(err),						// 2. error handler
-          () => console.log('Getting BlindWalls complete...')	// 3. complete handler
-        );
-    }
+    this.storage.getItem('BlindWalls').subscribe((data) => {
+      if (data != null) {
+
+        for (let BlindWallObj of data){
+          if ( BlindWallObj.id === this.id ) {
+          console.log(BlindWallObj);
+          this.BlindWallDetail = BlindWallObj;
+          this.fixBreakLineInDescription();
+        }
+      }
+      }
+    }, () => {});
+
+
+    // if (!this.BlindWalls) {
+    //   this.BlindWallService.getBlindWalls()
+    //     .subscribe(BlindWallData => {
+    //         this.BlindWalls = BlindWallData.json(); // 1. success handler
+    //         for (let BlindWallObj of this.BlindWalls){
+    //           if ( BlindWallObj.id === this.id ) {
+    //             console.log(BlindWallObj);
+    //             this.BlindWallDetail = BlindWallObj;
+    //             this.fixBreakLineInDescription();
+    //           }
+    //         }
+    //       },
+    //       err => console.log(err),						// 2. error handler
+    //       () => console.log('Getting BlindWalls complete...')	// 3. complete handler
+    //     );
+    // }
   }
 
 
