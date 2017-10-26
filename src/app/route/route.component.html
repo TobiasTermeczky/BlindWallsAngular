@@ -4,4 +4,12 @@
   Type: {{Route.type}}
   Time: {{Route.time}}
   Distance: {{Route.distance}}
+
+  <agm-map [latitude]=" 4.7769505" [longitude]="51.58307" [zoom]="15">
+    <agm-polyline>
+      <agm-polyline-point *ngFor="let point of Route.points" [latitude]="BlindWall(point.muralId).latitude" [longitude]="BlindWall(point.muralId).longitude"></agm-polyline-point>
+    </agm-polyline>
+  </agm-map>
+
+
 </div>

@@ -2,6 +2,8 @@
 import {Component, OnInit} from '@angular/core';
 import {Route} from '@angular/router';
 import {RouteService} from '../services/Route.service';
+import {BlindWall} from "../model/blindWall/BlindWall";
+import {AsyncLocalStorage} from "angular-async-local-storage";
 
 @Component({
   selector: 'app-root',
@@ -10,13 +12,25 @@ import {RouteService} from '../services/Route.service';
 })
 export class RouteComponent implements OnInit {
   public Routes: Route[];
+  BlindWalls: BlindWall[];
 
-  constructor(private RouteService: RouteService) {
+
+  constructor(private RouteService: RouteService, protected storage: AsyncLocalStorage) {
 
   }
 
   ngOnInit(): void {
     this.getRoutes();
+    this.getBlindWalls();
+
+  }
+  getBlindWalls(): void {
+
+    this.storage.getItem('BlindWalls').subscribe((data) => {
+      if (data != null) {
+        this.BlindWalls = data
+      }
+    }, () => {});
   }
 
   getRoutes(): void {
@@ -31,4 +45,17 @@ export class RouteComponent implements OnInit {
         );
     }
   }
+
+  BlindWall(muralId: Number) {
+    for (let BlindWallObj of this.BlindWalls) {
+      if (BlindWallObj.id === muralId) {
+        console.log(BlindWallObj);
+        return BlindWallObj;
+      }
+    }
+
+    return null;
+  }
+
+
 }
