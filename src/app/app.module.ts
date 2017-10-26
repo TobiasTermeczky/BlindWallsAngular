@@ -13,6 +13,7 @@ import { FooterComponent } from './footer/footer.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {BlindWallDetailComponent} from './blind-wall-detail/blind-wall-detail.component';
 import { AgmCoreModule } from '@agm/core';
+import {AsyncLocalStorageModule} from "angular-async-local-storage";
 
 
 
@@ -21,11 +22,15 @@ import { AgmCoreModule } from '@agm/core';
     AppComponent, BlindWallComponent, BlindWallDetailComponent, RouteComponent, NavComponent, FooterComponent
   ],
   imports: [
-    BrowserModule, HttpModule, AppRoutingModule, NgbModule.forRoot(), AgmCoreModule.forRoot({
+    BrowserModule, HttpModule, AppRoutingModule, NgbModule.forRoot(), AsyncLocalStorageModule, AgmCoreModule.forRoot({
       apiKey: 'AIzaSyBk11HPd3iP4TQIGnJ8I6fVGehAt57Ml60'
     })
   ],
   providers: [BlindWallService, RouteService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+
+
+
+}
