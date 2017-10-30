@@ -1,9 +1,11 @@
 ///<reference path="../../../node_modules/@angular/core/src/metadata/directives.d.ts"/>
 import {Component, OnInit} from '@angular/core';
-import {Route} from '@angular/router';
+import {Router} from '@angular/router';
 import {RouteService} from '../services/Route.service';
 import {BlindWall} from "../model/blindWall/BlindWall";
 import {AsyncLocalStorage} from "angular-async-local-storage";
+import {Route} from "../model/route/Route"
+import {current} from "codelyzer/util/syntaxKind";
 
 @Component({
   selector: 'app-root',
@@ -46,6 +48,15 @@ export class RouteComponent implements OnInit {
     }
   }
 
+  getRoutebyId(routeId: Number){
+    var CurrentRoute : Route;
+    for (let route of this.Routes) {
+      if (route.id == routeId) {
+        CurrentRoute = route;
+      }
+    }
+  }
+
   BlindWall(muralId: Number) {
     for (let BlindWallObj of this.BlindWalls) {
       if (BlindWallObj.id === muralId) {
@@ -57,5 +68,18 @@ export class RouteComponent implements OnInit {
     return null;
   }
 
+  genRouteArray(routeId: Number){
+    var currentRoute: Route
+    var path = [,]
+
+    for(let point of currentRoute.points){
+      var mural: BlindWall = this.BlindWall(point.muralId);
+      path.
+
+
+    }
+
+
+  }
 
 }
