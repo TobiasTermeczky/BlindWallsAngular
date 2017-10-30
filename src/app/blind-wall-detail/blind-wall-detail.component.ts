@@ -2,7 +2,6 @@ import {Component, OnInit, OnDestroy, Input} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import {BlindWall} from '../model/blindWall/BlindWall';
 import {BlindWallService} from '../services/BlindWall.service';
-import {forEach} from '@angular/router/src/utils/collection';
 import {AsyncLocalStorage} from "angular-async-local-storage";
 
 @Component({

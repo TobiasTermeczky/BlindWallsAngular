@@ -28,12 +28,12 @@ export class AppComponent {
     headers.append('Content-Type', 'application/json');
     headers.append('X-Access-Token', 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJibGluZHdhbGwiLCJleHAiOjE0NzcwNTUyNDM4Mzd9.xCUtndY08RdDTVFaSdocsfdsZZ1m4-Zu6lxrgqt5GOQ');
 
-    this._http.get('https://api.blindwalls.gallery/apiv2/murals', headers).subscribe(BlindWallData => {
-        this.BlindWalls =  BlindWallData.json(); // 1. success handler
-        this.storage.setItem("BlindWalls", this.BlindWalls).subscribe(()=>{
+    this._http.get('https://api.blindwalls.gallery/apiv2/murals').subscribe(BlindWallData => {
+        this.BlindWalls = BlindWallData.json(); // 1. success handler
+        this.storage.setItem("BlindWalls", this.BlindWalls).subscribe(() => {
           //done
           console.log("BlindWalls saved to storage ");
-        }, () =>{
+        }, () => {
           console.log("Error saving to storage ");
         });
         //console.log(this.BlindWalls);
@@ -43,5 +43,5 @@ export class AppComponent {
       () => console.log('Getting BlindWalls complete...')	// 3. complete handler
     );
 
-
+  }
 }
