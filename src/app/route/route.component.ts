@@ -6,6 +6,7 @@ import {BlindWall} from "../model/blindWall/BlindWall";
 import {AsyncLocalStorage} from "angular-async-local-storage";
 import {Route} from "../model/route/Route"
 import {current} from "codelyzer/util/syntaxKind";
+import {Point} from "../model/route/Point";
 
 @Component({
   selector: 'app-root',
@@ -15,6 +16,8 @@ import {current} from "codelyzer/util/syntaxKind";
 export class RouteComponent implements OnInit {
   public Routes: Route[];
   BlindWalls: BlindWall[];
+  numbers: number[];
+  muralSorted: Point[];
 
 
   constructor(private RouteService: RouteService, protected storage: AsyncLocalStorage) {
@@ -24,6 +27,8 @@ export class RouteComponent implements OnInit {
   ngOnInit(): void {
     this.getRoutes();
     this.getBlindWalls();
+    this.numbers = [];
+    this.muralSorted = [];
 
   }
   getBlindWalls(): void {
@@ -52,7 +57,7 @@ export class RouteComponent implements OnInit {
     var CurrentRoute : Route;
     for (let route of this.Routes) {
       if (route.id == routeId) {
-        CurrentRoute = route;
+        return route;
       }
     }
   }
@@ -68,18 +73,17 @@ export class RouteComponent implements OnInit {
     return null;
   }
 
-  genRouteArray(routeId: Number){
-    var currentRoute: Route
-    var path = [,]
+  public genRouteArray(routeId: Number){
+    console.log("genRouteArray: "+ routeId);
+    var currentRoute: Route;
+    currentRoute = this.getRoutebyId(routeId)
+    var i = 0;
 
     for(let point of currentRoute.points){
-      var mural: BlindWall = this.BlindWall(point.muralId);
-      path.
-
-
+      this.numbers.push(i);
+      i++;
+      this.muralSorted.push(point);
     }
 
-
   }
-
 }

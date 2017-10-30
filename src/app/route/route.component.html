@@ -1,41 +1,17 @@
 <h2>route: </h2>
 <div *ngFor="let Route of Routes">
-  <h3>{{Route.id}} - {{Route.name.nl}}</h3>
+  <h3 >{{Route.id}} - {{Route.name.nl}}</h3>
   Type: {{Route.type}}
   Time: {{Route.time}}
   Distance: {{Route.distance}}
+  <button (click)="genRouteArray(Route.id)">Show Route!</button>
+</div>
 
-  <div *ngFor="let point of Route.points">
-    <span>{{BlindWall(point.muralId).title.nl}}    {{point.muralId}}</span>
-  </div>
-
-
-
-  <!--<agm-map [latitude]=" 4.7769505" [longitude]="51.58307" [zoom]="15">-->
-    <!--<agm-polyline>-->
-      <!--<agm-polyline-point *ngFor="let point of Route.points" [latitude]="" [longitude]="BlindWall(point.muralId).longitude"></agm-polyline-point>-->
-    <!--</agm-polyline>-->
-  <!--</agm-map>-->
-
-  <agm-map zoom="14"
-          center="1135 Karamea-Kohaihai Rd, Kahurangi National Park, Tasman"
-          style="height:90%" >
-    <directions
-      draggable="true"
-      panel="directions-panel"
-      travel-mode="DRIVING"
-      origin="1135 Karamea-Kohaihai Rd, Kahurangi National Park, Tasman"
-      destination="Pier St, Jackson Bay, West Coast, New Zeland">
-    </directions>
-    <custom-marker id="start"
-                   position="1135 Karamea-Kohaihai Rd, Kahurangi National Park, Tasman">
-      <div> Start Here </div>
-    </custom-marker>
-    <custom-marker id="end"
-                   position="Pier St, Jackson Bay, West Coast, New Zeland">
-      <div> Ends Here </div>
-    </custom-marker>
+<div *ngIf="muralSorted.length>1">
+  <agm-map style="height: 500px; width: 500px;" [latitude]=" 4.7769505" [longitude]="51.58307" [zoom]="15">
+  <span *ngFor="let number of numbers">
+    <sebm-google-map-directions  [origin]="BlindWall(muralSorted[number].muralId)" [destination]="BlindWall(muralSorted[(number +1)].muralId)"></sebm-google-map-directions>
+  </span>
   </agm-map>
-
 
 </div>
